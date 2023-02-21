@@ -29,6 +29,7 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
+
 Visualization Manager:
   Class: ""
   Displays:
@@ -439,6 +440,7 @@ Visualization Manager:
       Value: Orbit (rviz)
       Yaw: 2.8504226207733154
     Saved: ~
+    
 Window Geometry:
   Confidence:
     collapsed: false
