@@ -19,17 +19,11 @@ $ echo source $(pwd)/install/local_setup.bash >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
-# Starting the leapmotion-ros2-wrapper
-After connecting your Leap Motion sensor to your computer, run below command.
-
-```
-$ ros2 launch leapmotion_wrapper leapmotion.launch.py
-```
-
 # Starting the leapmotion_display_rviz2 
-Next, visual the hand tracking at the RViz2. Run below command.
+Next, visual the hand tracking at the RViz2. Run below command. It will start the leapmotion-ros2-wrapper automatically.
 
 ```
 $ ros2 launch leapmotion_display_rviz2 display_leapmotion.launch.py
 ```
+
 
