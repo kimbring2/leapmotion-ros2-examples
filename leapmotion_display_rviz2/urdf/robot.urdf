@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<robot name="onshape">
+	<link name="base_link">
+		<visual>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_5.stl"/>
+			</geometry>
+			<material name="part_5_material">
+				<color rgba="0.231373 0.380392 0.705882 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_5.stl"/>
+			</geometry>
+			<material name="part_5_material">
+				<color rgba="0.231373 0.380392 0.705882 1.0"/>
+			</material>
+		</collision>
+		<visual>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_3.stl"/>
+			</geometry>
+			<material name="part_3_material">
+				<color rgba="0.615686 0.811765 0.929412 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_3.stl"/>
+			</geometry>
+			<material name="part_3_material">
+				<color rgba="0.615686 0.811765 0.929412 1.0"/>
+			</material>
+		</collision>
+		<visual>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_1.stl"/>
+			</geometry>
+			<material name="part_1_material">
+				<color rgba="0.498039 0.498039 0.498039 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_1.stl"/>
+			</geometry>
+			<material name="part_1_material">
+				<color rgba="0.498039 0.498039 0.498039 1.0"/>
+			</material>
+		</collision>
+		<visual>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_4.stl"/>
+			</geometry>
+			<material name="part_4_material">
+				<color rgba="0.647059 0.647059 0.647059 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_4.stl"/>
+			</geometry>
+			<material name="part_4_material">
+				<color rgba="0.647059 0.647059 0.647059 1.0"/>
+			</material>
+		</collision>
+		<visual>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_2.stl"/>
+			</geometry>
+			<material name="part_2_material">
+				<color rgba="0 0 0 1.0"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="-0.00149965 0.000663125 0.00029842" rpy="1.5708 -0 0" />
+			<geometry>
+				<mesh filename="package://leapmotion_display_rviz2/meshes/part_2.stl"/>
+			</geometry>
+			<material name="part_2_material">
+				<color rgba="0 0 0 1.0"/>
+			</material>
+		</collision>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0" />
+			<inertia ixx="0" ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" />
+		</inertial>
+	</link>
+</robot>

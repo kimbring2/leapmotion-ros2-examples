@@ -34,11 +34,9 @@ endif()
 # Install LAUNCH files
 install(DIRECTORY
   launch
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(DIRECTORY
+  urdf
   rviz2
+  meshes
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -1,6 +1,6 @@
 import os
 
-from ament_index_python.packages import get_package_share_directory
+from ament_index_python.packages import get_package_share_directory, get_package_share_path
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch import LaunchDescription
@@ -12,9 +12,12 @@ from launch.actions import (
 from launch.conditions import IfCondition
 from launch.substitutions import (
     LaunchConfiguration,
-    TextSubstitution
+    TextSubstitution,
+    Command
 )
+
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 
 # Set LOG format
 os.environ['RCUTILS_CONSOLE_OUTPUT_FORMAT'] = '{time} [{name}] [{severity}] {message}'
@@ -24,6 +27,24 @@ camera_model = 'leapmotion'
 
 
 def launch_setup(context, *args, **kwargs):
+    urdf_tutorial_path = get_package_share_path('leapmotion_display_rviz2')
+    default_model_path = urdf_tutorial_path / 'urdf/robot.urdf'
+
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    urdf_file_name = 'robot.urdf'
+
+    model_arg = DeclareLaunchArgument(name='model', default_value=str(default_model_path),
+                                      description='Absolute path to robot urdf file')
+
+    print('urdf_file_name : {}'.format(urdf_file_name))
+    urdf = os.path.join(
+        get_package_share_directory('leapmotion_display_rviz2'),
+        'urdf',
+        'robot' + '.urdf'
+    )
+
+    print("urdf: ", urdf)
+
     start_zed_node = LaunchConfiguration('start_leapmotion_node')
     camera_name = LaunchConfiguration('camera_name')
 
@@ -31,6 +52,18 @@ def launch_setup(context, *args, **kwargs):
 
     if (camera_name_val == ""):
         camera_name_val = camera_model
+
+
+    robot_description = ParameterValue(Command(['xacro ', LaunchConfiguration('model')]),
+                                       value_type=str)
+
+    print("robot_description: ", robot_description)
+
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'robot_description': robot_description}]
+    )    
 
     # Rviz2 Configurations to be loaded by ZED Node
     config_rviz2 = os.path.join(
@@ -49,7 +82,15 @@ def launch_setup(context, *args, **kwargs):
         arguments=[["-d"], [config_rviz2]],
     )
 
-    # ZED Wrapper launch file
+    urdf_node = Node(
+            package='joint_state_publisher',
+            executable='joint_state_publisher',
+            name='joint_state_publisher',
+            output='screen',
+            parameters=[{'use_sim_time': use_sim_time}],
+            arguments=[urdf])
+
+    # Leap Motion Wrapper launch file
     leapmotion_wrapper_launch = IncludeLaunchDescription(
         launch_description_source=PythonLaunchDescriptionSource([
             get_package_share_directory('leapmotion_wrapper'),
@@ -62,8 +103,11 @@ def launch_setup(context, *args, **kwargs):
     )
 
     return [
+        model_arg,
         rviz2_node,
-        leapmotion_wrapper_launch
+        urdf_node,
+        leapmotion_wrapper_launch,
+        robot_state_publisher_node
     ]
 
 
@@ -73,7 +117,7 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 'start_leapmotion_node',
                 default_value='True',
-                description='Set to `False` to start only Rviz2 if a ZED node is already running.'),
+                description='Set to `False` to start only Rviz2 if a Leap Motion node is already running.'),
             DeclareLaunchArgument(
                 'camera_name',
                 default_value=TextSubstitution(text=""),
