@@ -26,4 +26,4 @@ Next, visual the hand tracking at the RViz2. Run below command. It will start th
 $ ros2 launch leapmotion_display_rviz2 display_leapmotion.launch.py
 ```
 
-
+<img src="images/leapmotion_rviz.gif" width="1000">
