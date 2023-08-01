@@ -14,7 +14,8 @@ $ cd ~/ros2_ws/src/ #use your current ros2 workspace folder
 $ git clone --recursive https://github.com/kimbring2/leapmotion-ros2-examples.git
 $ cd ..
 $ rosdep install --from-paths src --ignore-src -r -y
-$ colcon build --symlink-install --cmake-args=-DCMAKE_BUILD_TYPE=Release
+$ source install/setup.bash
+$ colcon build --packages-select leapmotion_wrapper
 ```
 
 # Found error and solution
