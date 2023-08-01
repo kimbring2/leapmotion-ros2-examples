@@ -11,13 +11,16 @@ Below is visualizng the hand tracking information in RViz2
 # Build the package
 ```
 $ cd ~/ros2_ws/src/ #use your current ros2 workspace folder
-$ git clone  --recursive https://github.com/kimbring2/leapmotion-ros2-examples.git
+$ git clone --recursive https://github.com/kimbring2/leapmotion-ros2-examples.git
 $ cd ..
 $ rosdep install --from-paths src --ignore-src -r -y
 $ colcon build --symlink-install --cmake-args=-DCMAKE_BUILD_TYPE=Release
-$ echo source $(pwd)/install/local_setup.bash >> ~/.bashrc
-$ source ~/.bashrc
 ```
+
+# Found error and solution
+- AttributeError: module 'importlib._bootstrap' has no attribute 'SourceFileLoader'
+<img src="images/SourceFileLoaderError.png" width="700">
+```$ python3.8 -m ensurepip --upgr```
 
 # Starting the leapmotion_display_rviz2 
 Next, visual the hand tracking at the RViz2. Run below command. It will start the leapmotion-ros2-wrapper automatically.
