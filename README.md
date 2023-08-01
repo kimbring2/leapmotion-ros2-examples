@@ -15,7 +15,7 @@ $ git clone --recursive https://github.com/kimbring2/leapmotion-ros2-examples.gi
 $ cd ..
 $ rosdep install --from-paths src --ignore-src -r -y
 $ source install/setup.bash
-$ colcon build --packages-select leapmotion_wrapper
+$ colcon build --packages-select leapmotion_display_rviz2
 ```
 
 # Found error and solution
